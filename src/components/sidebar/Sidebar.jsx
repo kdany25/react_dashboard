@@ -27,7 +27,7 @@ export default function Sidebar() {
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
-          <ul className="sidebarList" ccccc>
+          <ul className="sidebarList" >
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
@@ -63,11 +63,13 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
+          <Link to="/newUser" className="link">
             <li className="sidebarListItem">
+              
               <PermIdentity className="sidebarIcon" />
               Add an Admin
             </li>
-
+            </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
               Report
