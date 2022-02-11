@@ -77,7 +77,7 @@ export default function Product() {
             </div>
             <div className="productInfoItem">
               <span className="productInfoKey">sales:</span>
-              <span className="productInfoValue">5123</span>
+              <span className="productInfoValue">0</span>
             </div>
             <div className="productInfoItem">
               <span className="productInfoKey">in stock:</span>

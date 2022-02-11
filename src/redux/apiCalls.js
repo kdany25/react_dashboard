@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess } from "./userRedux";
+import { loginFailure, loginStart, loginSuccess  , getUserStart , getUserSuccess , getUserFailure } from "./userRedux";
 import { publicRequest, userRequest } from "../requestMethods";
 import {
   getProductFailure,
@@ -32,6 +32,16 @@ export const getProducts = async (dispatch) => {
     dispatch(getProductSuccess(res.data));
   } catch (err) {
     dispatch(getProductFailure());
+  }
+};
+
+export const getUsers = async (dispatch) => {
+  dispatch(getUserStart());
+  try {
+    const res = await publicRequest.get("/users");
+    dispatch(getUserSuccess(res.data));
+  } catch (err) {
+    dispatch(getUserFailure());
   }
 };
 
