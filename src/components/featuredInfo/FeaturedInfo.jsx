@@ -23,7 +23,7 @@ export default function FeaturedInfo() {
       <div className="featuredItem">
         <span className="featuredTitle">This Month</span>
         <div className="featuredMoneyContainer">
-          <span className="featuredMoney">Rwf {income[1]?.total}</span>
+          <span className="featuredMoney">Rwf 0 {income[1]?.total}</span>
           <span className="featuredMoneyRate">
             %{Math.floor(perc)}{" "}
             {perc < 0 ? (
