@@ -49,16 +49,18 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
+
+            <Link to="/order" className="link">
             <li className="sidebarListItem">
               <DynamicFeed className="sidebarIcon" />
               Orders
             </li>
-
+            </Link>
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Subcribers
             </li>
-          </ul>
+          </ul> 
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
