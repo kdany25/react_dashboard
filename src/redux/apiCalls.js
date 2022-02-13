@@ -30,6 +30,10 @@ import {
   addOrderFailure,
 } from "./orderRedux"
 
+import {
+  getSubStart , getSubSuccess , getSubFailure
+} from "./subscriberRedux"
+
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
   try {
@@ -127,5 +131,17 @@ export const addOrder = async (order, dispatch) => {
     dispatch(addOrderSuccess(res.data));
   } catch (err) {
     dispatch(addOrderFailure());
+  }
+};
+
+
+//get sub
+export const getSubscriber = async (dispatch) => {
+  dispatch(getSubStart());
+  try {
+    const res = await userRequest.get("/sub");
+    dispatch(getSubSuccess(res.data));
+  } catch (err) {
+    dispatch(getSubFailure());
   }
 };

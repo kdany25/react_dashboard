@@ -56,10 +56,12 @@ export default function Sidebar() {
               Orders
             </li>
             </Link>
+            <Link to="/sub" className="link">
             <li className="sidebarListItem">
               <ChatBubbleOutline className="sidebarIcon" />
               Subcribers
             </li>
+            </Link>
           </ul> 
         </div>
         <div className="sidebarMenu">
