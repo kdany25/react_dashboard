@@ -11,16 +11,17 @@ import Product from "./pages/product/Product";
 import NewProduct from "./pages/newProduct/NewProduct";
 import Login from "./pages/login/Login";
 import { useSelector } from "react-redux";
+import OrderList from "./pages/OrderList/OrderList";
 
 function App() {
-  const admin = useSelector((state) => state.user.currentUser.isAdmin);
+  // const admin = useSelector((state) => state.user.currentUser.isAdmin);
   return (
     <Router>
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
-        {admin && (
+        {/* {admin && ( */}
           <>
             <Topbar />
             <div className="container">
@@ -33,6 +34,9 @@ function App() {
               </Route>
               <Route path="/user/:userId">
                 <User />
+              </Route>
+              <Route path="/order">
+                <OrderList />
               </Route>
               <Route path="/newUser">
                 <NewUser />
@@ -48,7 +52,7 @@ function App() {
               </Route>
             </div>
           </>
-       )} 
+       {/* )}  */}
       </Switch>
     </Router>
   );

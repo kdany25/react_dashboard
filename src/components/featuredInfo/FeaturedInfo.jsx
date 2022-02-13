@@ -20,8 +20,28 @@ export default function FeaturedInfo() {
 
   return (
     <div className="featured">
+         <div className="featuredItem">
+        <div className="fit">
+          <span className="featuredTitle">Today</span>
+          <div className=" house">
+            <span class="material-icons-sharp">attach_money</span>
+          </div>
+        </div>
+        <div className="featuredMoneyContainer">
+          <span className="featuredMoney">Rwf 0</span>
+          <span className="featuredMoneyRate">
+            0% <ArrowDownward className="featuredIcon negative" />
+          </span>
+        </div>
+        <span className="featuredSub">Compared to yesterday</span>
+      </div>
       <div className="featuredItem">
-        <span className="featuredTitle">This Month</span>
+        <div className="fit">
+          <span className="featuredTitle">Month</span>
+          <div className="sp">
+            <span class="material-icons-sharp">price_check</span>
+          </div>
+        </div>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">Rwf 0 {income[1]?.total}</span>
           <span className="featuredMoneyRate">
@@ -35,18 +55,14 @@ export default function FeaturedInfo() {
         </div>
         <span className="featuredSub">Compared to last month</span>
       </div>
+   
       <div className="featuredItem">
-        <span className="featuredTitle">Today</span>
-        <div className="featuredMoneyContainer">
-          <span className="featuredMoney">Rwf 0</span>
-          <span className="featuredMoneyRate">
-            0% <ArrowDownward className="featuredIcon negative" />
-          </span>
+        <div className="fit">
+          <span className="featuredTitle">Expense</span>
+          <div className=" road">
+            <span class="material-icons-sharp">money_off_csred</span>
+          </div>
         </div>
-        <span className="featuredSub">Compared to yesterday</span>
-      </div>
-      <div className="featuredItem">
-        <span className="featuredTitle">Expense</span>
         <div className="featuredMoneyContainer">
           <span className="featuredMoney">Rwf 0</span>
           <span className="featuredMoneyRate">
