@@ -23,7 +23,7 @@ export default function SubList() {
       renderCell: (params) => {
         return (
           <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
+            <img className="productListImg" src="https://i.ibb.co/VNWtHGm/391-3915862-icon2-subscribe-to-newsletter-icon.jpg" alt="" />
             {params.row.email}
           </div>
         );
