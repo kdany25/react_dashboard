@@ -16,40 +16,49 @@ export default function OrderList() {
 
   const handleDelete = (id) => {
     deleteOrder(id, dispatch);
-  }; 
+  };
 
   const columns = [
-    { field: "_id", headerName: "ID", width: 220 },
+    { field: "_id", headerName: "ID", width: 80 },
     {
       field: "order",
-      headerName: "Order",
-      width: 200,
+      headerName: "Customer Info",
+      width: 300,
       renderCell: (params) => {
         return (
+          <>
           <div className="productListItem">
-            <img className="productListImg" src={params.row.img} alt="" />
-            {params.row.userId}
+            {/* <img
+              className="productListImg"
+              src="https://i.ibb.co/PZL0wSL/clip-art-fast-online-ordering-fried-food-delivery-icon-png-transparent-png-kindpng.png"
+              alt=""
+            /> */}
+            {params.row.user.name}
           </div>
+          <div className="productListItem">
+          {params.row.user.phone}
+        </div>
+        </>
         );
       },
     },
-    { field: "inStock", headerName: "Stock", width: 200 },
+
     {
       field: "amount",
       headerName: "amount",
       width: 160,
     },
     {
-        field: "address",
-        headerName: "address",
-        width: 160,
-      },
+      field: "address",
+      headerName: "address",
+      width: 160,
+    },
 
-      {
-        field: "status",
-        headerName: "status",
-        width: 160,
-      },
+    {
+      field: "status",
+      headerName: "status",
+      width: 160,
+    },
     {
       field: "action",
       headerName: "Action",
