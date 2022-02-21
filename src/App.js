@@ -15,14 +15,14 @@ import OrderList from "./pages/OrderList/OrderList";
 import SubList from "./pages/SubList/SubList"
 
 function App() {
-  const admin = useSelector((state) => state.user.currentUser?.isAdmin);
+  // const admin = useSelector((state) => state.user.currentUser?.isAdmin);
   return (
     <Router>
       <Switch>
         <Route path="/login">
           <Login />
         </Route>
-        {admin && (
+        {/* {admin && ( */}
           <>
             <Topbar />
             <div className="container">
@@ -56,7 +56,7 @@ function App() {
               </Route>
             </div>
           </>
-       )}  
+       {/* )}   */}
       </Switch>
     </Router>
   );
