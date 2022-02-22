@@ -33,16 +33,20 @@ export default function OrderList() {
               src="https://i.ibb.co/PZL0wSL/clip-art-fast-online-ordering-fried-food-delivery-icon-png-transparent-png-kindpng.png"
               alt=""
             /> */}
-            {params.row.user.name}
+            {params.row.name}
           </div>
           <div className="productListItem">
-          {params.row.user.phone}
+          {params.row.email}
         </div>
         </>
         );
       },
     },
-
+    {
+      field: "phone",
+      headerName: "phone",
+      width: 160,
+    },
     {
       field: "amount",
       headerName: "amount",
