@@ -3,10 +3,9 @@ import {
   LineStyle,
   PermIdentity,
   Storefront,
-  AttachMoney,
   DynamicFeed,
   ChatBubbleOutline,
-  BarChart
+  BarChart,
 } from "@material-ui/icons";
 import { Link } from "react-router-dom";
 
@@ -27,7 +26,7 @@ export default function Sidebar() {
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
-          <ul className="sidebarList" >
+          <ul className="sidebarList">
             <Link to="/users" className="link">
               <li className="sidebarListItem">
                 <PermIdentity className="sidebarIcon" />
@@ -40,39 +39,33 @@ export default function Sidebar() {
                 Products
               </li>
             </Link>
-            <li className="sidebarListItem">
-              <AttachMoney className="sidebarIcon" />
-              Transactions
-            </li>
           </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Notifications</h3>
           <ul className="sidebarList">
-
             <Link to="/order" className="link">
-            <li className="sidebarListItem">
-              <DynamicFeed className="sidebarIcon" />
-              Orders
-            </li>
+              <li className="sidebarListItem">
+                <DynamicFeed className="sidebarIcon" />
+                Orders
+              </li>
             </Link>
             <Link to="/sub" className="link">
-            <li className="sidebarListItem">
-              <ChatBubbleOutline className="sidebarIcon" />
-              Subcribers
-            </li>
+              <li className="sidebarListItem">
+                <ChatBubbleOutline className="sidebarIcon" />
+                Subcribers
+              </li>
             </Link>
-          </ul> 
+          </ul>
         </div>
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Staff</h3>
           <ul className="sidebarList">
-          <Link to="/newUser" className="link">
-            <li className="sidebarListItem">
-              
-              <PermIdentity className="sidebarIcon" />
-              Add an Admin
-            </li>
+            <Link to="/newUser" className="link">
+              <li className="sidebarListItem">
+                <PermIdentity className="sidebarIcon" />
+                Add an Admin
+              </li>
             </Link>
             <li className="sidebarListItem">
               <BarChart className="sidebarIcon" />
