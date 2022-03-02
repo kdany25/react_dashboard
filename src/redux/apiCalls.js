@@ -1,4 +1,11 @@
-import { loginFailure, loginStart, loginSuccess  , getUserStart , getUserSuccess , getUserFailure } from "./userRedux";
+import {
+  loginFailure,
+  loginStart,
+  loginSuccess,
+  getUserStart,
+  getUserSuccess,
+  getUserFailure,
+} from "./userRedux";
 import { publicRequest, userRequest } from "../requestMethods";
 import {
   getProductFailure,
@@ -28,11 +35,9 @@ import {
   addOrderStart,
   addOrderSuccess,
   addOrderFailure,
-} from "./orderRedux"
+} from "./orderRedux";
 
-import {
-  getSubStart , getSubSuccess , getSubFailure
-} from "./subscriberRedux"
+import { getSubStart, getSubSuccess, getSubFailure } from "./subscriberRedux";
 
 export const login = async (dispatch, user) => {
   dispatch(loginStart());
@@ -78,6 +83,7 @@ export const updateProduct = async (id, product, dispatch) => {
   dispatch(updateProductStart());
   try {
     // update
+    const res = await userRequest.put(`/products/${id}`);
     dispatch(updateProductSuccess({ id, product }));
   } catch (err) {
     dispatch(updateProductFailure());
@@ -92,7 +98,6 @@ export const addProduct = async (product, dispatch) => {
     dispatch(addProductFailure());
   }
 };
-
 
 //orders
 export const getOrder = async (dispatch) => {
@@ -133,7 +138,6 @@ export const addOrder = async (order, dispatch) => {
     dispatch(addOrderFailure());
   }
 };
-
 
 //get sub
 export const getSubscriber = async (dispatch) => {
