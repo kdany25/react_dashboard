@@ -14,6 +14,8 @@ export default function NewProduct() {
   const [inputs, setInputs] = useState({});
   const [file, setFile] = useState(null);
   const [cat, setCat] = useState([]);
+  const [catc, setCatc] = useState([]);
+  const [cats, setCats] = useState([]);
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -23,6 +25,13 @@ export default function NewProduct() {
   };
   const handleCat = (e) => {
     setCat(e.target.value.split(","));
+  };
+  const handleCatc = (e) => {
+    setCatc(e.target.value.split(","));
+  };
+
+  const handleCats = (e) => {
+    setCats(e.target.value.split(","));
   };
 
   const handleClick = (e) => {
@@ -61,7 +70,7 @@ export default function NewProduct() {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const product = { ...inputs, img: downloadURL, categories: cat };
+          const product = { ...inputs, img: downloadURL, categories:cat , color :catc , size :cats };
           addProduct(product, dispatch);
         });
       }
@@ -85,7 +94,7 @@ export default function NewProduct() {
           <input
             name="title"
             type="text"
-            placeholder="Apple Airpods"
+            placeholder="shoes"
             onChange={handleChange}
           />
         </div>
@@ -110,6 +119,14 @@ export default function NewProduct() {
         <div className="addProductItem">
           <label>Categories</label>
           <input type="text" placeholder="jeans,skirts" onChange={handleCat} />
+        </div>
+        <div className="addProductItem">
+          <label>Color</label>
+          <input type="text" placeholder="red,green" onChange={handleCatc} />
+        </div>
+        <div className="addProductItem">
+          <label>Size</label>
+          <input type="text" placeholder="XL,L" onChange={handleCats} />
         </div>
         <div className="addProductItem">
           <label>Stock</label>
