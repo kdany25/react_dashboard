@@ -28,11 +28,7 @@ export default function OrderList() {
         return (
           <>
           <div className="productListItem">
-            {/* <img
-              className="productListImg"
-              src="https://i.ibb.co/PZL0wSL/clip-art-fast-online-ordering-fried-food-delivery-icon-png-transparent-png-kindpng.png"
-              alt=""
-            /> */}
+           
             {params.row.name}
           </div>
           <div className="productListItem">
