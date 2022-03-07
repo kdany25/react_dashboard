@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./newProduct.css";
 import {
   getStorage,
@@ -9,6 +9,7 @@ import {
 import app from "../../firebase";
 import { addProduct } from "../../redux/apiCalls";
 import { useDispatch } from "react-redux";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function NewProduct() {
   const [inputs, setInputs] = useState({});
@@ -16,6 +17,8 @@ export default function NewProduct() {
   const [cat, setCat] = useState([]);
   const [catc, setCatc] = useState([]);
   const [cats, setCats] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const dispatch = useDispatch();
 
   const handleChange = (e) => {
@@ -33,7 +36,12 @@ export default function NewProduct() {
   const handleCats = (e) => {
     setCats(e.target.value.split(","));
   };
-
+  useEffect(() => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+    }, 5000);
+  }, []);
   const handleClick = (e) => {
     e.preventDefault();
     const fileName = new Date().getTime() + file.name;
@@ -70,75 +78,96 @@ export default function NewProduct() {
         // Handle successful uploads on complete
         // For instance, get the download URL: https://firebasestorage.googleapis.com/...
         getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-          const product = { ...inputs, img: downloadURL, categories:cat , color :catc , size :cats };
+          const product = {
+            ...inputs,
+            img: downloadURL,
+            categories: cat,
+            color: catc,
+            size: cats,
+          };
           addProduct(product, dispatch);
+          setLoading(true)
         });
       }
     );
   };
 
   return (
-    <div className="newProduct">
-      <h1 className="addProductTitle">New Product</h1>
-      <form className="addProductForm">
-        <div className="addProductItem">
-          <label>Image</label>
-          <input
-            type="file"
-            id="file"
-            onChange={(e) => setFile(e.target.files[0])}
-          />
+    // <>
+    //   {loading ? (
+    //     <ClipLoader size={30} color={"#123abc"} loading={loading} />
+    //   ) : (
+        <div className="newProduct">
+          <h1 className="addProductTitle">New Product</h1>
+          <form className="addProductForm">
+            <div className="addProductItem">
+              <label>Image</label>
+              <input
+                type="file"
+                id="file"
+                onChange={(e) => setFile(e.target.files[0])}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Title</label>
+              <input
+                name="title"
+                type="text"
+                placeholder="shoes"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Description</label>
+              <input
+                name="desc"
+                type="text"
+                placeholder="description..."
+                onChange={handleChange}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Price</label>
+              <input
+                name="price"
+                type="number"
+                placeholder="100"
+                onChange={handleChange}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Categories</label>
+              <input
+                type="text"
+                placeholder="jeans,skirts"
+                onChange={handleCat}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Color</label>
+              <input
+                type="text"
+                placeholder="red,green"
+                onChange={handleCatc}
+              />
+            </div>
+            <div className="addProductItem">
+              <label>Size</label>
+              <input type="text" placeholder="XL,L" onChange={handleCats} />
+            </div>
+            <div className="addProductItem">
+              <label>Stock</label>
+              <select name="inStock" onChange={handleChange}>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+            <button onClick={handleClick} className="addProductButton">
+              Create
+            </button>
+          </form>
         </div>
-        <div className="addProductItem">
-          <label>Title</label>
-          <input
-            name="title"
-            type="text"
-            placeholder="shoes"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="addProductItem">
-          <label>Description</label>
-          <input
-            name="desc"
-            type="text"
-            placeholder="description..."
-            onChange={handleChange}
-          />
-        </div>
-        <div className="addProductItem">
-          <label>Price</label>
-          <input
-            name="price"
-            type="number"
-            placeholder="100"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="addProductItem">
-          <label>Categories</label>
-          <input type="text" placeholder="jeans,skirts" onChange={handleCat} />
-        </div>
-        <div className="addProductItem">
-          <label>Color</label>
-          <input type="text" placeholder="red,green" onChange={handleCatc} />
-        </div>
-        <div className="addProductItem">
-          <label>Size</label>
-          <input type="text" placeholder="XL,L" onChange={handleCats} />
-        </div>
-        <div className="addProductItem">
-          <label>Stock</label>
-          <select name="inStock" onChange={handleChange}>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-          </select>
-        </div>
-        <button onClick={handleClick} className="addProductButton">
-          Create
-        </button>
-      </form>
-    </div>
+    //   )}
+    // </>
   );
 }
